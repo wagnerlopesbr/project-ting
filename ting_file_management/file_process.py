@@ -29,5 +29,9 @@ def remove(instance: Queue):
         print(f"Arquivo {removed} removido com sucesso", file=sys.stdout)
 
 
-def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+def file_metadata(instance: Queue, position):  # type: ignore
+    try:
+        data = instance.search(position)  # type: ignore
+        print(data, file=sys.stdout)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
